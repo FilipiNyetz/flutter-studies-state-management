@@ -51,9 +51,16 @@ A forma mais primitiva e nativa de gerenciamento de estado no Flutter. Ao ser ch
 
 ```dart
 setState(() {
-  currentStatus += 1;
-  statusLog.add(StatusLog(DateTime.now(), trafficLight[currentStatus]));
-});
+                    switch (currentLight) {
+                      case .green:
+                        currentLight = .yellow;
+                      case .yellow:
+                        currentLight = .red;
+                      case .red:
+                        currentLight = .green;
+                    }
+                    statusLog.add(StatusLog(DateTime.now(), currentLight));
+                  });
 ```
 
 **Quando usar:** ideal para estado local simples, quando o `StatefulWidget` está posicionado corretamente na árvore — isolando apenas o widget que precisa reconstruir.
