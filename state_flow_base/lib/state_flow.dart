@@ -146,7 +146,6 @@ class _StateFlowAppState extends State<StateFlowApp> {
                       case .red:
                         currentLight = .green;
                     }
-
                     statusLog.add(StatusLog(DateTime.now(), currentLight));
                   });
                 },
